@@ -1,0 +1,25 @@
+version: 2.1
+
+# Määritä työprosessit
+workflows:
+  build:
+    name: Build and Test
+    environment:
+      node: 14
+      yarn: true # käytetään yarnia riippuvuuksien hallintaan
+    scripts:
+      - name: Asenna riippuvuudet
+        script: |
+          cd android
+          ./gradlew dependencies
+          cd ..
+          yarn install
+      - name: Suorita testit
+        script: |
+          yarn test
+      - name: Rakenna Android
+        script: |
+          cd android
+          ./gradlew assembleRelease
+    artifacts:
+      - android/app/build/outputs/apk/release/app-release.apk # polku APK-tiedostoon

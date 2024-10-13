@@ -5,21 +5,20 @@ workflows:
   build:
     name: Build and Test
     environment:
-      node: 14
-      yarn: true # käytetään yarnia riippuvuuksien hallintaan
+      node: 14 # Node.js:n versio
     scripts:
       - name: Asenna riippuvuudet
         script: |
           cd android
           ./gradlew dependencies
           cd ..
-          yarn install
+          npm install # Asentaa projektin riippuvuudet NPM:llä
       - name: Suorita testit
         script: |
-          yarn test
+          npm test # Suorita testit NPM:llä
       - name: Rakenna Android
         script: |
           cd android
           ./gradlew assembleRelease
     artifacts:
-      - android/app/build/outputs/apk/release/app-release.apk # polku APK-tiedostoon
+      - android/app/build/outputs/apk/release/app-release.apk # Polku rakennettuun APK-tiedostoon

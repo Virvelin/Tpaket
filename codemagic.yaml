@@ -1,11 +1,9 @@
 version: 2.1
-
-# Määritä työprosessit
 workflows:
   build:
     name: Build and Test
     environment:
-      node: 14 # Node.js:n versio
+      node: 14 
     scripts:
       - name: Asenna riippuvuudet
         script: |
@@ -21,4 +19,6 @@ workflows:
           cd android
           ./gradlew assembleRelease
     artifacts:
-      - android/app/build/outputs/apk/release/app-release.apk # Polku rakennettuun APK-tiedostoon
+      - android/app/build/outputs/apk/release/app-release.apk
+    enable_ssh: true # Ota käyttöön SSH-pääsy
+

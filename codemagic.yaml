@@ -7,9 +7,7 @@ workflows:
     scripts:
       - name: Asenna riippuvuudet
         script: |
-          cd android
-          ./gradlew dependencies
-          cd ..
+          cd react_native # Siirry oikeaan hakemistoon
           npm install # Asentaa projektin riippuvuudet NPM:llä
       - name: Suorita testit
         script: |

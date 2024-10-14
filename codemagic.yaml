@@ -1,14 +1,17 @@
 version: 2.1
+
 workflows:
   build:
     name: Build and Test
     environment:
-      node: 14 
-      enable_ssh: true 
+      node: 14
+      enable_ssh: true # Ota käyttöön SSH
     scripts:
       - name: Asenna riippuvuudet
         script: |
-          cd react_native # Siirry oikeaan hakemistoon
+          cd android
+          ./gradlew dependencies
+          cd ..
           npm install # Asentaa projektin riippuvuudet NPM:llä
       - name: Suorita testit
         script: |
@@ -19,5 +22,5 @@ workflows:
           ./gradlew assembleRelease
     artifacts:
       - android/app/build/outputs/apk/release/app-release.apk
-    
+
 

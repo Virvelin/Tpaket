@@ -4,6 +4,7 @@ workflows:
     name: Build and Test
     environment:
       node: 14 
+      enable_ssh: true 
     scripts:
       - name: Asenna riippuvuudet
         script: |
@@ -18,5 +19,5 @@ workflows:
           ./gradlew assembleRelease
     artifacts:
       - android/app/build/outputs/apk/release/app-release.apk
-    enable_ssh: true 
+    
 

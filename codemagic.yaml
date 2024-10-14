@@ -18,5 +18,5 @@ workflows:
           ./gradlew assembleRelease
     artifacts:
       - android/app/build/outputs/apk/release/app-release.apk
-    enable_ssh: true # Ota käyttöön SSH-pääsy
+    enable_ssh: true 
 
